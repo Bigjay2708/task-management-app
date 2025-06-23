@@ -1,0 +1,6 @@
+To fix the styling issues, I recommend downgrading Tailwind CSS from version 4 to a more stable version. Run these commands in your terminal:
+
+npm uninstall tailwindcss @tailwindcss/postcss
+npm install tailwindcss@3.3.0 postcss@8.4.31 autoprefixer@10.4.15 --save-dev
+
+This will install more stable versions that work well with Next.js.
