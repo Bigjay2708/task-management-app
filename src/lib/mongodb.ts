@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 // Skip environment check during build
-const uri = process.env.MONGODB_URI || 'mongodb+srv://bigjay2708:agoodsecret@the-review-room-cluster.jn0xlcl.mongodb.net/test?retryWrites=true&w=majority&appName=the-review-room-cluster';
+const uri = process.env.MONGODB_URI || 'mongodb+srv://bigjay2708:agoodsecret@the-review-room-cluster.jn0xlcl.mongodb.net/task-management?retryWrites=true&w=majority&appName=the-review-room-cluster';
 const options = {};
 
 let client;

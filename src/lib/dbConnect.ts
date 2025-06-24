@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 // Use hardcoded fallback for build-time
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://bigjay2708:agoodsecret@the-review-room-cluster.jn0xlcl.mongodb.net/test?retryWrites=true&w=majority&appName=the-review-room-cluster';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://bigjay2708:agoodsecret@the-review-room-cluster.jn0xlcl.mongodb.net/task-management?retryWrites=true&w=majority&appName=the-review-room-cluster';
 
 /**
  * Global is used here to maintain a cached connection across hot reloads
