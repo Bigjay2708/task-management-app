@@ -25,12 +25,14 @@ You can access the live application at: [Task Management App](https://task-manag
 ## How It Works
 
 ### Task Management
+
 - **Create Tasks**: Add new tasks with title, description, priority, and status
 - **Update Tasks**: Edit task details or mark tasks as complete
 - **Delete Tasks**: Remove tasks from your list
 - **Task Listing**: View all your tasks in a clean interface
 
 ### UI/UX Features
+
 - **Responsive Design**: Works seamlessly on mobile, tablet, and desktop
 - **Dark/Light Mode**: Toggle between dark and light themes
 - **Loading States**: Visual feedback during API operations
