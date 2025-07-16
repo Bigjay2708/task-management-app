@@ -27,12 +27,14 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {  /
     }
   };
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 transform hover:scale-105 hover:-translate-y-1 animate-scale-in">
       <div className="flex flex-col h-full">
         {/* Card header with status indicator */}
-        <div className={`px-4 py-2 flex items-center gap-2 border-b border-gray-100 dark:border-gray-700 ${getStatusColor(task.status)}`}>
-          <StatusIcon />
-          <span className="text-xs font-semibold">
+        <div className={`px-4 py-2 flex items-center gap-2 border-b border-gray-100 dark:border-gray-700 ${getStatusColor(task.status)} transition-all duration-300`}>
+          <div className="animate-bounce-in">
+            <StatusIcon />
+          </div>
+          <span className="text-xs font-semibold animate-slide-in">
             {getStatusText(task.status)}
           </span>
         </div>
@@ -40,19 +42,19 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {  /
         {/* Card content */}
         <div className="p-5 flex-grow flex flex-col">
           <div className="flex justify-between items-start mb-3">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 line-clamp-1">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 line-clamp-1 animate-fade-in">
               {task.title}
             </h3>
-            <div className="flex space-x-2 ml-2">              <button
+            <div className="flex space-x-2 ml-2 animate-slide-in">              <button
                 onClick={() => onEdit(task)}
-                className="p-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-700 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-blue-900 dark:hover:text-blue-300 transition-colors"
+                className="p-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-700 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-blue-900 dark:hover:text-blue-300 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
                 aria-label="Edit task"
               >
                 <Edit size={14} />
               </button>
               <button
                 onClick={() => onDelete(task._id as string)}
-                className="p-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-red-100 hover:text-red-700 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-red-900 dark:hover:text-red-300 transition-colors"
+                className="p-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-red-100 hover:text-red-700 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-red-900 dark:hover:text-red-300 transition-all duration-300 transform hover:scale-110 hover:shake"
                 aria-label="Delete task"
               >
                 <Trash2 size={14} />
@@ -60,19 +62,19 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {  /
             </div>
           </div>
           
-          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow line-clamp-2">
+          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow line-clamp-2 animate-fade-in">
             {task.description ? truncateText(task.description, 120) : 'No description provided'}
           </p>
           
-          <div className="flex flex-wrap gap-2 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
-            <div className={`flex items-center text-xs font-medium ${getPriorityColor(task.priority)}`}>
-              <Flag className="w-3 h-3 mr-1" />
+          <div className="flex flex-wrap gap-2 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700 animate-slide-up">
+            <div className={`flex items-center text-xs font-medium ${getPriorityColor(task.priority)} transition-all duration-300 hover:scale-105`}>
+              <Flag className="w-3 h-3 mr-1 animate-pulse-subtle" />
               <span>{task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}</span>
             </div>
             
             {task.dueDate && (
-              <div className="flex items-center text-xs text-gray-600 dark:text-gray-400 ml-auto">
-                <Clock className="w-3 h-3 mr-1" />
+              <div className="flex items-center text-xs text-gray-600 dark:text-gray-400 ml-auto transition-all duration-300 hover:scale-105">
+                <Clock className="w-3 h-3 mr-1 animate-pulse-subtle" />
                 <span>Due: {format(new Date(task.dueDate), 'MMM d, yyyy')}</span>
               </div>
             )}

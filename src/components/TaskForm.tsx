@@ -46,14 +46,15 @@ export default function TaskForm({ onSubmit, initialData, buttonText = 'Add Task
     }
   };
   // Define input styles for reusability
-  const inputClass = "w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200";
-  const labelClass = "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5";
-  const selectClass = "w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none";
+  const inputClass = "w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 transform focus:scale-105";
+  const labelClass = "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 animate-slide-in";
+  const selectClass = "w-full px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 appearance-none transform focus:scale-105";
+  
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
-      <div>
+    <form onSubmit={handleSubmit} className="space-y-5 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 animate-fade-in">
+      <div className="animate-slide-up">
         <label htmlFor="title" className={labelClass}>
-          Title<span className="text-danger-500">*</span>
+          Title<span className="text-red-500">*</span>
         </label>
         <div className="relative">
           <input
@@ -69,7 +70,7 @@ export default function TaskForm({ onSubmit, initialData, buttonText = 'Add Task
         </div>
       </div>
 
-      <div>
+      <div className="animate-slide-up">
         <label htmlFor="description" className={labelClass}>
           Description
         </label>
@@ -84,7 +85,7 @@ export default function TaskForm({ onSubmit, initialData, buttonText = 'Add Task
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 animate-slide-up">
         <div>
           <label htmlFor="status" className={labelClass}>
             Status
@@ -146,24 +147,25 @@ export default function TaskForm({ onSubmit, initialData, buttonText = 'Add Task
         </div>
       </div>
 
-      <div className="pt-3">        <button
+      <div className="pt-3 animate-bounce-in">        <button
           type="submit"
           className={cn(
             "w-full bg-blue-600 text-white font-medium py-3 px-5 rounded-lg",
-            "hover:bg-blue-700 transition-colors duration-300",
+            "hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg",
             "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
             "shadow-sm flex items-center justify-center gap-2",
-            "dark:bg-blue-700 dark:hover:bg-blue-600"
+            "dark:bg-blue-700 dark:hover:bg-blue-600",
+            "active:scale-95"
           )}
         >
           {initialData ? (
             <>
-              <CheckCircle2 className="h-4 w-4" />
+              <CheckCircle2 className="h-4 w-4 animate-pulse-subtle" />
               {buttonText}
             </>
           ) : (
             <>
-              <span className="text-lg">+</span>
+              <span className="text-lg transform transition-transform duration-300 hover:rotate-180">+</span>
               {buttonText}
             </>
           )}

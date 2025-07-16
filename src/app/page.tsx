@@ -152,14 +152,14 @@ export default function Home() {
   }, [darkMode]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-900 animate-fade-in">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+      <header className="sticky top-0 z-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-slide-up">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Title */}
-            <div className="flex items-center">
-              <div className="flex-shrink-0 bg-blue-600 text-white p-2 rounded-lg">
+            <div className="flex items-center animate-slide-in">
+              <div className="flex-shrink-0 bg-blue-600 text-white p-2 rounded-lg transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
                 <ListTodo className="h-5 w-5" />
               </div>
               <h1 className="ml-3 text-xl font-bold text-gray-900 dark:text-white">
@@ -170,10 +170,10 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-4">          <button
                 onClick={toggleDarkMode}
-                className="rounded-full p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="rounded-full p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transform transition-all duration-300 hover:scale-110 hover:bg-gray-100 dark:hover:bg-gray-700"
                 aria-label="Toggle dark mode"
               >
-                {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {darkMode ? <Sun className="h-5 w-5 animate-spin" /> : <Moon className="h-5 w-5" />}
               </button>
             </div>
 
@@ -181,10 +181,10 @@ export default function Home() {
             <div className="flex md:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transform transition-all duration-300 hover:scale-110"
                 aria-label="Open main menu"
               >
-                <Menu className="h-6 w-6" />
+                <Menu className={`h-6 w-6 transform transition-transform duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`} />
               </button>
             </div>
           </div>
@@ -192,11 +192,11 @@ export default function Home() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-5 duration-300">
+          <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700 animate-slide-up">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <button
                 onClick={toggleDarkMode}
-                className="w-full flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="w-full flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transform transition-all duration-200 hover:translate-x-2"
               >
                 {darkMode ? <Sun className="h-5 w-5 mr-3" /> : <Moon className="h-5 w-5 mr-3" />}
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
@@ -206,13 +206,13 @@ export default function Home() {
         )}
       </header>
 
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
         {/* Error message */}
         {error && (
-          <div className="mb-8 bg-danger-50 dark:bg-danger-900/30 border border-danger-300 dark:border-danger-800 text-danger-800 dark:text-danger-300 rounded-lg p-4 flex items-start justify-between">
+          <div className="mb-8 bg-red-50 dark:bg-red-900/30 border border-red-300 dark:border-red-800 text-red-800 dark:text-red-300 rounded-lg p-4 flex items-start justify-between animate-shake">
             <div className="flex items-center space-x-3">
-              <span className="flex-shrink-0 h-10 w-10 rounded-full bg-danger-100 dark:bg-danger-800 flex items-center justify-center">
-                <svg className="h-5 w-5 text-danger-600 dark:text-danger-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <span className="flex-shrink-0 h-10 w-10 rounded-full bg-red-100 dark:bg-red-800 flex items-center justify-center animate-pulse">
+                <svg className="h-5 w-5 text-red-600 dark:text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </span>
@@ -223,7 +223,7 @@ export default function Home() {
             </div>
             <button 
               onClick={clearError}
-              className="flex-shrink-0 ml-4 text-danger-500 hover:text-danger-700 dark:hover:text-danger-300"
+              className="flex-shrink-0 ml-4 text-red-500 hover:text-red-700 dark:hover:text-red-300 transform transition-all duration-200 hover:scale-110"
               aria-label="Dismiss"
             >
               <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -235,17 +235,17 @@ export default function Home() {
 
         {/* Loading indicator */}
         {loading && (
-          <div className="flex justify-center my-8">
+          <div className="flex justify-center my-8 animate-bounce-in">
             <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-600"></div>
           </div>
         )}
 
         <div className="grid grid-cols-1 gap-10">
           {/* Task creation section */}
-          <section>            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6">
+          <section className="animate-slide-up">            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 transform transition-all duration-300 hover:shadow-lg hover:scale-105">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-                  <CheckCircle className="mr-2 h-6 w-6 text-blue-600" />
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center animate-slide-in">
+                  <CheckCircle className="mr-2 h-6 w-6 text-blue-600 animate-pulse-subtle" />
                   Create New Task
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
@@ -257,9 +257,9 @@ export default function Home() {
           </section>
 
           {/* Task list section */}
-          <section>
-            <div className="mb-6">              <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-                <ListTodo className="mr-2 h-6 w-6 text-blue-600" />
+          <section className="animate-slide-up">
+            <div className="mb-6 animate-slide-in">              <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+                <ListTodo className="mr-2 h-6 w-6 text-blue-600 animate-pulse-subtle" />
                 Your Tasks
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mt-1">
@@ -267,18 +267,20 @@ export default function Home() {
               </p>
             </div>
             
-            <TaskList
-              tasks={tasks}
-              onEdit={updateTask}
-              onDelete={deleteTask}
-            />
+            <div className="animate-fade-in">
+              <TaskList
+                tasks={tasks}
+                onEdit={updateTask}
+                onDelete={deleteTask}
+              />
+            </div>
           </section>
         </div>
       </main>
 
-      {/* Footer */}      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-16">
+      {/* Footer */}      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-16 animate-slide-up">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-600 dark:text-gray-400 text-sm">
+          <p className="text-center text-gray-600 dark:text-gray-400 text-sm animate-fade-in">
             &copy; {new Date().getFullYear()} Task Management App. Built with Next.js and MongoDB.
           </p>
         </div>
